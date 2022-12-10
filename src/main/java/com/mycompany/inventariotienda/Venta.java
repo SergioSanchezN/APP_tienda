@@ -22,7 +22,7 @@ public class Venta {
     }
 
     //GETs
-    public Producto get_prodicto(){
+    public Producto get_producto(){
             return producto;
     }
     public int get_cantidad(){

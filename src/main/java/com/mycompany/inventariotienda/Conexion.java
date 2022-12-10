@@ -4,6 +4,7 @@
  */
 package com.mycompany.inventariotienda;
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -12,22 +13,20 @@ import java.sql.*;
  */
 public class Conexion {
     private static final String driver="com.mysql.jdbc.Driver";
-    private static final String bbdd="jdbc:mysql://localhost:3306/gestion";
+    private static final String bbdd="jdbc:mysql://localhost:3307/tienda";
     private static final String usuario ="root";
     private static final String clave="";
     
+    
     public static Connection Conexion(){
-    /*Declaramos una variable para almacenar la cadena de conexión.
-    Primero la iniciamos en null.*/
-    Connection conex = null;
-         
-    //Controlamos la excepciones que puedan surgir al conectarnos a la BBDD
+        Connection conex = null;
+        
         try {
             //Registrar el driver
             Class.forName(driver);
             //Creamos una conexión a la Base de Datos
             conex = DriverManager.getConnection(bbdd, usuario, clave);
-
+            System.out.println("se ha conectado");
         // Si hay errores informamos al usuario. 
         } catch (Exception e) {
             System.out.println("Error al conectar con la base de datos.\n"
@@ -36,4 +35,19 @@ public class Conexion {
     // Devolvemos la conexión.
     return conex;
     }
+    /*
+    public void ver_factur(){
+      try (PreparedStatement stmt = this.prepareStatement("SELECT country FROM country")) {
+      ResultSet rs = stmt.executeQuery();
+
+      while (rs.next())
+        System.out.println (rs.getString("country"));
+
+    } catch (SQLException sqle) { 
+      System.out.println("Error en la ejecución:" 
+        + sqle.getErrorCode() + " " + sqle.getMessage());    
+    }
+    }
+    */
+    
 }
